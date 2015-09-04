@@ -7,6 +7,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<% if @current_user.present? %>
+<p><%= @current_user.username %> <%= link_to 'Log out', login_path, :method => 'delete', :data => {:confirm => 'Are you sure you wish to log out?'} %></p>
+<% else %>
+
+<% end %>
 
 <%= yield %>
 

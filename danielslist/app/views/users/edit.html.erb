@@ -1,0 +1,53 @@
+<h2>Edit User</h2>
+
+<% if @current_user.errors.any? %>
+	<ul>
+		<% @current_user.errors.full_messages.each do |msg| %>
+		<li>
+			<%= msg %>
+		</li>
+		<% end %>
+	</ul>
+<% end %>
+
+<%= form_for @current_user do |f| %>
+<p>
+	<ul>
+		<li><%= f.label :email, 'Email Address:' %></li>
+		<li>
+			<%= f.email_field :email %>
+		</li>
+	</ul>
+</p>
+<p>
+	<ul>
+		<li><%= f.label :username, 'Username:' %></li>
+		<li><%= f.text_field :username %></li>
+	</ul>
+</p>
+<p>
+	<ul>
+		<li><%= f.label :name, 'First Name:' %></li>
+		<li><%= f.text_field :name %></li>
+	</ul>
+</p>
+<p>
+	<ul>
+		<li><%= f.label :surname, 'Surname:' %></li>
+		<li><%= f.text_field :surname %></li>
+	</ul>
+</p>
+<p>
+	<ul>
+		<li><%= f.label :password, 'Password:' %></li>
+		<li><%= f.password_field :password %></li>
+	</ul>
+</p>
+<p>
+	<ul>
+		<li><%= f.label :password_confirmation, 'Confirm Password' %></li>
+		<li><%= f.password_field :password_confirmation%></li>
+	</ul>
+</p>
+<%= f.submit %>
+<% end %>
