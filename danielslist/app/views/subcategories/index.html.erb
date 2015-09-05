@@ -1,2 +1,10 @@
-<h1>Subcategories#index</h1>
-<p>Find me in app/views/subcategories/index.html.erb</p>
+<h2>Subcategory Index</h2>
+
+<ul>
+	<% @subcategory.items.each do |item| %>
+	<li>
+		<p><%= link_to(image_tag(item.image), item) %></p> 
+		<p><%= item.name %></p>
+	</li>
+	<% end %>
+</ul>
