@@ -40,5 +40,5 @@ class UsersController < ApplicationController
 
 	def check_if_logged_in
   		redirect_to root_path unless @current_user.present?
- 	 end
+ 	end
 end

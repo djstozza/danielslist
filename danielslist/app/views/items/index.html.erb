@@ -1,0 +1,13 @@
+<h2>Item Index</h2>
+
+<ul>
+	<%= @items.each do |item| %>
+	<li>
+		<ul>
+			<li><%= item.name %></li>
+			<li><%= link_to(image_tag(item.image), item) %></li>
+			<li></li>
+		</ul>
+	</li>
+	<% end %>
+</ul>

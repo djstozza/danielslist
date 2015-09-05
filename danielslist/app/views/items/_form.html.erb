@@ -1,0 +1,38 @@
+<% if @current_user.present? %>
+
+	<%= form_for @item do |f| %>
+	<p>
+		<ul>
+			<li><%= f.label :name, 'Item Name:' %></li>
+			<li><%= f.text_field :name %></li>
+		</ul>
+	</p>
+	<p>
+		<ul>
+			<li><%= f.label :description, 'Product Description:' %></li>
+			<li><%= f.text_area :description, size: "60x6" %></li>
+		</ul>
+	</p>
+	<p>
+		<ul>
+			<li><%= f.label :price, 'Price ($):' %></li>
+			<li><%= f.text_field :price, :prescision => 8, :scale => 2 %></li>
+		</ul>
+	</p>
+	<p>
+		<ul>
+			<li><%= f.label :image %></li>
+			<li><%= f.url_field :image %></li>
+		</ul>
+	</p>
+
+	<p><%= f.submit %></p>
+
+	<% end %>
+<% else %>
+
+<p>You need to have an account to post an item.</p>
+<p>Please <%= link_to 'Sign In', root_path %>, or <%= link_to 'Create an Account', new_user_path %>.</p>
+
+
+<% end %>

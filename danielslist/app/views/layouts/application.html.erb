@@ -8,10 +8,22 @@
 </head>
 <body>
 <% if @current_user.present? %>
-<p><%= link_to "#{@current_user.username}", user_path(@current_user) %> <%= link_to 'Log out', login_path, :method => 'delete', :data => {:confirm => 'Are you sure you wish to log out?'} %></p>
+	<p>Logged in as: <%= link_to "#{@current_user.username}", user_path(@current_user) %> <%= link_to 'Log out', login_path, :method => 'delete', :data => {:confirm => 'Are you sure you wish to log out?'} %></p>
 <% else %>
+	<p></p>
 
 <% end %>
+
+<nav>
+	<%= link_to 'Post', new_item_path %>
+	<%= link_to 'Category Index', categories_path %>
+</nav>
+
+
+
+
+
+
 
 <%= yield %>
 
