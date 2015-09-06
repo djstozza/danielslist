@@ -11,6 +11,7 @@
 #  updated_at     :datetime
 #  subcategory_id :integer
 #  user_id        :integer
+#  category_id    :integer
 #
 
 class Item < ActiveRecord::Base

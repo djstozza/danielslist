@@ -12,8 +12,10 @@ class ItemsController < ApplicationController
   end
 
   def create
-  	item = Item.create item_params
-  	redirect_to item
+  	# item = Item.create item_params
+  	
+    item = @current_user.items.create item_params 
+    redirect_to item
   end
 
   def edit
@@ -34,7 +36,7 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-  	params.require(:item).permit(:name, :description, :price, :image)
+  	params.require(:item).permit(:name, :description, :price, :image, :subcategory_id, :category_id, :user_id)
   end
 
 
