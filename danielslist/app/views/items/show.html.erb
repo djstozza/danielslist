@@ -8,9 +8,11 @@
 
 <p><%= @item.description %></p>
 
-<p><%= @item.subcategory.name %></p>
+<p><%= link_to(@item.subcategory.name, subcategory_path(@item.subcategory)) %></p>
 
-<p><%= @item.subcategory.category.name %></p>
+<p><%= link_to(@item.subcategory.category.name, category_path(@item.subcategory.category)) %></p>
+
+<p>Posted: <%= @item.created_at.strftime "%e %B, %Y" %></p>
 
 
 
