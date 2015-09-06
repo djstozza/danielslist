@@ -1,6 +1,21 @@
 <% if @current_user.present? %>
+	
 
-	<%= form_for @item do |f| %>
+	<%# Need to add category dropdown menu that then makes the subcategory menu only show the subcategories linked to the category %>
+
+
+
+
+
+	
+
+
+	<ul>
+		<li><label>Subcategory</label></li>
+		<li><%= f.select :subcategory_id, Subcategory.all.map{|subcategory| [subcategory.name, subcategory.id]}, :include_blank => true %></li>
+	</ul>
+
+	
 	<p>
 		<ul>
 			<li><%= f.label :name, 'Item Name:' %></li>

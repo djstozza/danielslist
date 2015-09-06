@@ -16,6 +16,7 @@
 class Item < ActiveRecord::Base
 	belongs_to :subcategory
 	belongs_to :user
+	
 
 	validates :name, :presence => true
 	validates :description, :presence => true
