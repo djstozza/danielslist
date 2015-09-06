@@ -12,13 +12,15 @@
 
 <p><%= @item.subcategory.category.name %></p>
 
-<p><%= @item.user.username %></p>
+
 
 <% if @current_user == @item.user %>
+<p><%= link_to(@item.user.username, user_path) %></p>
+
 <div class="controls">
 	<%= link_to 'Edit Item', edit_item_path(@item) %>
 	<%= link_to 'Delete Item', @item, :method => 'delete', :data => {:confirm => "Are you sure you want to delete this item?"} %>
 </div>
 <% else %>
-
+	<p><%= @item.user.username %></p>
 <% end %>

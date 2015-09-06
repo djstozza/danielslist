@@ -8,16 +8,20 @@
 </head>
 <body>
 <% if @current_user.present? %>
-	<p>Logged in as: <%= link_to "#{@current_user.username}", user_path(@current_user) %> <%= link_to 'Log out', login_path, :method => 'delete', :data => {:confirm => 'Are you sure you wish to log out?'} %></p>
+	<p>Logged in as: <%= link_to "#{@current_user.username}", user_path(@current_user) %></p>
+	<nav>
+		<%= link_to 'Post', new_item_path %>
+		<%= link_to 'Category Index', categories_path %>
+		<%= link_to 'Log out', login_path, :method => 'delete', :data => {:confirm => 'Are you sure you wish to log out?'} %>
+	</nav>
 <% else %>
-	<p></p>
-
+	<nav>
+		<%= link_to 'Post', new_item_path %>
+		<%= link_to 'Category Index', categories_path %>
+	</nav>
 <% end %>
 
-<nav>
-	<%= link_to 'Post', new_item_path %>
-	<%= link_to 'Category Index', categories_path %>
-</nav>
+
 
 <% if flash[:message].present? %>
 	<p><%= flash[:message] %></p>
