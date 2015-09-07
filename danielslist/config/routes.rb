@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
 	root :to => 'session#new'
 
+	get '/searches' => 'searches#results'
+	
 	resources :categories
 	resources :subcategories
 	resources :items

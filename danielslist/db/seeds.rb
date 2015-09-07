@@ -11,15 +11,62 @@ u5 = User.create :username => 'Verbal', :email => 'keyeser_soze@gamil.com', :nam
 
 
 Category.destroy_all
-c1 = Category.create :name => 'For Sale'
-c2 = Category.create :name => 'Housing'
+c0 = Category.create :name => 'community'
+c1 = Category.create :name => 'housing'
+c2 = Category.create :name => 'jobs'
+c3 = Category.create :name => 'personals'
+c4 = Category.create :name => 'for sale'
+c5 = Category.create :name => 'gigs'
+
+
+
+
+
 
 
 Subcategory.destroy_all
-sc1 = Subcategory.create :name => 'Antiques' 
-sc2 = Subcategory.create :name => 'Appliances'
-sc3 = Subcategory.create :name => 'Apts / Housing'
-sc4 = Subcategory.create :name => 'Housing / Swap'
+subcats0 = ["activities", "artists", "childcare", "classes", "events", "general", "groups", "localnews", "lost+found", "musicians", "pets", "politics", "rideshare", "volunteers"] 
+
+subcats0.each do |subcat|
+	c0.subcategories.create :name => subcat
+end
+
+subcats1 = ["apts / housing", "housing swap", "housing wanted", "office / commercial", "parking / storage", "real estate for sale", "rooms / shared", "rooms wanted", "sublets / temporary", "vacation rentals"]
+
+subcats1.each do |subcat|
+	c1.subcategories.create :name => subcat
+end
+
+subcats2 = ["accounting+finance", "admin / office", "arch / engineering", "art / media / design", "biotech / science", "business / mgmt", "customer service", "education", "food / bev / hosp", "general labor" "government", "human resources", "internet engineers", "legal  /  paralegal", "manufacturing", "marketing / pr / ad", "medical / health", "nonprofit sector", "real estate", "retail / wholesale", "sales / biz dev", "salon / spa / fitness", "security", "skilled trade / craft", "software / qa / dba", "systems / network", "technical support", "transport", "tv / film / video", "web / info design", "writing / editing", "[ETC]","[ part-time ]"]
+
+subcats2.each do |subcat|
+	c2.subcategories.create :name => subcat
+end
+
+subcats3 = ["strictly platonic", "women seek women", "women seeking men", "men seeking women", "men seeking men", "misc romance", "casual encounters", "missed connections", "rants and raves"]
+
+subcats3.each do |subcat|
+	c3.subcategories.create :name => subcat
+end
+
+subcat4 = ["antiques", "appliances", "arts+crafts", "atv/utv/sno", "auto parts", "baby+kid", "barter", "beauty+hlth", "bikes", "boats", "books", "business", "cars+trucks", "cds/dvd/vhs", "cell phones", "clothes+acc", "collectibles", "computers", "electronics", "farm+garden", "free", "furniture", "garage sale", "general", "heavy equip", "household", "jewelry", "materials", "motorcycles", "music instr", "photo+video", "rvs+camp", "sporting", "tickets", "tools", "toys+games", "video"]
+
+subcat4.each do |subcat|
+	c4.subcategories.create :name => subcat
+end
+
+subcat5 = ["computer", "creative", "crew", "domestic", "event", "labor", "talent", "writing"]
+subcat5.each do |subcat|
+	c5.subcategories.create :name => subcat
+end
+
+
+
+
+
+
+
+
 
 Item.destroy_all
 i1 = Item.create :name => 'Some Item', :description => 'blah blah blah blah blah', :price => '99.99', :image => 'http://fillmurray.com/200/200'
@@ -42,21 +89,6 @@ i10 = Item.create :name => 'Park Bench', :description => "What? Come on! Man, yo
 
 
 
-u1.items << i1 << i9
-u2.items << i2 << i8
-u3.items << i3 << i7
-u4.items << i4 << i5
-u5.items << i6 << i10
-
-
-sc1.items << i1 << i3 << i4
-sc2.items << i2 << i5
-sc3.items << i6 << i7 << i8
-sc4.items << i9 << i10
-
-
-c1.subcategories << sc1 << sc2
-c2.subcategories << sc3 << sc4
 
 
 

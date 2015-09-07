@@ -8,17 +8,10 @@
 
 
 	<%= form_for @item do |f| %>
-	<ul>
-		<li><label>Category</label></li>
-		<li>
-			<%= f.select :category_id, Category.all.map{|category| [category.name, category.id]}, :include_blank => true %>
-		</li>
-	</ul>
-
 
 	<ul>
 		<li><label>Subcategory</label></li>
-		<li><%= f.select :subcategory_id, Subcategory.all.map{|subcategory| [subcategory.name, subcategory.id]}, :include_blank => true %></li>
+		<li><%= f.select :subcategory_id, Subcategory.all.map{|subcategory| ["#{subcategory.category.name}: #{subcategory.name}", subcategory.id]}, :include_blank => true %></li>
 	</ul>
 
 	
