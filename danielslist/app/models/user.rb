@@ -15,6 +15,14 @@
 
 class User < ActiveRecord::Base
 	has_secure_password
+	acts_as_messageable
+	def mailboxer_name
+		self.username
+	end
+
+	def mailboxer_email(object)
+		self.email
+	end
 
 	has_many :items
 

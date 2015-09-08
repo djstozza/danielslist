@@ -12,10 +12,12 @@
 	<nav>
 		<%= link_to 'Post', new_item_path %>
 		<%= link_to 'Category Index', categories_path %>
+		<%= link_to "Inbox", mailbox_inbox_path %>
 		<%= link_to 'Log out', login_path, :method => 'delete', :data => {:confirm => 'Are you sure you wish to log out?'} %>
 	</nav>
 <% else %>
 	<nav>
+		<%= link_to 'Sign In', root_path %>
 		<%= link_to 'Post', new_item_path %>
 		<%= link_to 'Category Index', categories_path %>
 	</nav>

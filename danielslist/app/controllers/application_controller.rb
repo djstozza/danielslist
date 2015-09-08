@@ -5,12 +5,22 @@ class ApplicationController < ActionController::Base
 
   before_action :fetch_current_user
 
+  helper_method :mailbox
+  
   private
   def fetch_current_user
   	if session[:user_id].present?
   		@current_user = User.find_by :id => session[:user_id]
   		session[:user_id] = nil unless @current_user.present?
   			
-  		end
   	end
+  end
+
+  def mailbox
+    @mailbox ||= @current_user.mailbox
+  end
+
+  def conversation
+    @conversation ||= mailbox.conversations.find(params[:id])
+  end
 end
