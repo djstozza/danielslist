@@ -8,8 +8,8 @@ class ConversationsController < ApplicationController
   	def create
     	recipients = User.where(id: conversation_params)
     	conversation = @current_user.send_message(conversation_params[:recipients], conversation_params[:body], conversation_params[:subject]).conversation
-    	flash[:message] = "Your message was successfully sent!"
     	redirect_to conversation_path(conversation)
+    	flash[:message] = "Your message was successfully sent!"
   	end
 
   	def show
@@ -20,8 +20,8 @@ class ConversationsController < ApplicationController
 
   	def reply
     	@current_user.reply_to_conversation(conversation, message_params[:body])
-    	flash[:message] = "Your reply message was successfully sent!"
     	redirect_to conversation_path(conversation)
+    	flash[:message] = "Your reply message was successfully sent!"
   	end
 
   	def trash
