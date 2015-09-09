@@ -6,40 +6,109 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
-<% if @current_user.present? %>
-	<p>Logged in as: <%= link_to "#{@current_user.username}", user_path(@current_user) %></p>
-	<nav>
-		<%= link_to 'Post', new_item_path %>
-		<%= link_to 'Category Index', categories_path %>
-		<%= link_to "Inbox", mailbox_inbox_path %>
-		<%= link_to 'Log out', login_path, :method => 'delete', :data => {:confirm => 'Are you sure you wish to log out?'} %>
-	</nav>
-<% else %>
-	<nav>
-		<%= link_to 'Sign In', root_path %>
-		<%= link_to 'Post', new_item_path %>
-		<%= link_to 'Category Index', categories_path %>
-	</nav>
-<% end %>
+	
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Danielslist</a>
+    </div>
 
-<%= form_tag searches_path, :method => 'get' do %>
-  <p>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", :name => nil %>
-  </p>
-<% end %>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="<%= categories_path %>">Category Index</a></li>
+       	<li><a href="<%= new_item_path %>">Post</a></li>
+      </ul>
+      	<%= form_tag searches_path, :method => 'get', :class => 'navbar-form navbar-left' do %>
+		 	<div class="form-group">
+		 	<%= text_field_tag :search, params[:search], :class => 'form-control' %>
+		 	</div>
+		
+		<%= submit_tag "Search", :name => nil, :class => 'btn btn-default' %>  
+
+		<% end %>
+     
 
 
-<% if flash[:message].present? %>
-	<p><%= flash[:message] %></p>
-<% end %>
+      <ul class="nav navbar-nav navbar-right">
+
+        <% if @current_user.present? %>
+        	<li class="active"><a href="<%= user_path(@current_user) %>"><%= @current_user.username %><span class="sr-only">(current)</span></a></li>
+
+        	<li class="dropdown">
+          		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Options<span class="caret"></span></a>
+          		<ul class="dropdown-menu">
+            		<li><a href="<%= edit_user_path(@current_user) %>">Edit Details</a></li>
+            		<li><a href="<%= mailbox_inbox_path %>">Inbox</a></li>
+            		<li><%= link_to 'Log out', login_path, :method => 'delete', :data => {:confirm => 'Are you sure you wish to log out?'} %></li>
+          		</ul>
+        	</li>
+        <% else %>
+        	<li class="active"><a href="<%= root_path %>">Sign In<span class="sr-only">(current)</span></a></li>
+        <% end %>
+        
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+
+
+		<%# if @current_user.present? %>
+		
+		
+				<%#= link_to "#{@current_user.username}", user_path(@current_user) %>
+				
+				<%#= link_to "Inbox", mailbox_inbox_path %>
+				<%#= link_to 'Post', new_item_path %>
+				
+				<%#= link_to 'Category Index', categories_path %>
+				
+				
+				
+				
+				
+				
+			
+		<%# else %>
+		
+				<%#= link_to 'Sign In', root_path %>
+				<%#= link_to 'Post', new_item_path %>
+				<%#= link_to 'Category Index', categories_path %>
+			
+		<%# end %>
+	</div>
 
 
 
 
 
-<%= yield %>
+
+
+
+
+
+<div class="container">
+	<% if flash[:message].present? %>
+		<p><%= flash[:message] %></p>
+	<% end %>
+
+	
+
+	<%= yield %>
+</div>
+
+
 
 </body>
 </html>
