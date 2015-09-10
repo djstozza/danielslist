@@ -13,11 +13,11 @@ u4 = User.create :username => 'Verbal', :email => 'keyeser_soze@gamil.com', :pas
 
 Category.destroy_all
 c0 = Category.create :name => 'community'
-c5 = Category.create :name => 'gigs'
+c1 = Category.create :name => 'gigs'
 c2 = Category.create :name => 'jobs'
 c3 = Category.create :name => 'personals'
 c4 = Category.create :name => 'for sale'
-c1 = Category.create :name => 'housing'
+c5 = Category.create :name => 'housing'
 
 
 
@@ -32,9 +32,8 @@ subcats0.each do |subcat|
 	c0.subcategories.create :name => subcat
 end
 
-subcats1 = ["apts / housing", "housing swap", "housing wanted", "office / commercial", "parking / storage", "real estate for sale", "rooms / shared", "rooms wanted", "sublets / temporary", "vacation rentals"]
-
-subcats1.each do |subcat|
+subcat1 = ["computer", "creative", "crew", "domestic", "event", "labor", "talent", "writing"]
+subcat1.each do |subcat|
 	c1.subcategories.create :name => subcat
 end
 
@@ -56,11 +55,13 @@ subcat4.each do |subcat|
 	c4.subcategories.create :name => subcat
 end
 
-subcat5 = ["computer", "creative", "crew", "domestic", "event", "labor", "talent", "writing"]
-subcat5.each do |subcat|
+
+
+subcats5 = ["apts / housing", "housing swap", "housing wanted", "office / commercial", "parking / storage", "real estate for sale", "rooms / shared", "rooms wanted", "sublets / temporary", "vacation rentals"]
+
+subcats5.each do |subcat|
 	c5.subcategories.create :name => subcat
 end
-
 
 
 
