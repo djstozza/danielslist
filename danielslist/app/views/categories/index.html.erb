@@ -1,20 +1,31 @@
-<h2>Category Index</h2>
-
-
-
-<ul>
-	<% @categories.each do |category| %>
-	
-	<li><%= link_to category.name, category %>
+<div class="jumbotron1">
+	<div class="categorycontainer">
 		<ul>
-			<%  category.subcategories.each do |subcategory| %>
-			<li>
-				<%= link_to subcategory.name, subcategory %>
-			</li>
-			<% end %>
-		</ul>
-		
-	</li>
-
-	<% end %>
-</ul>
+		<% @categories.each do |category| %>
+		<div class="col-md-4 <%= 'sale' if category.name == 'for sale' %> ">
+		<li><h3><%= link_to category.name, category, :class => "col-md-12 centre " %></h3> 
+			<ul>
+				<%  category.subcategories.each do |subcategory| %>
+					<% if category.subcategories.count > 15 %>
+						<div class='col-md-6'
+							<li>
+								<%= link_to subcategory.name, subcategory, :class => "centre" %>
+							</li>
+						</div>
+					<% else %>
+						<div class="col-md-12">
+							<li>
+								<%= link_to subcategory.name, subcategory, :class => "centre" %>
+							</li>
+						</div>
+					<% end %>
+				<% end %>
+			</ul>
+			
+		</li>
+		</div>
+		<% end %>
+	</ul>
+	</div>
+	
+</div>

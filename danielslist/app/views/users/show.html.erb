@@ -1,28 +1,48 @@
-<h2><%= @current_user.name %> <%= @current_user.surname %> </h2>
+<div class="jumbotron">
+	<div class="row spacer centre">
+		<h3>Account Information: </h3>
 
-<h3>Account Information: </h3>
+		<p>Email: <%= @user.email %></p>
+		<p>Username: <%= @user.username %></p>
 
-<p>Email: <%= @current_user.email %></p>
-<p>Username: <%= @current_user.username %></p>
+		<div class="controls">
+			<%= link_to 'Edit Details', edit_user_path(@user) %>
+			
+			<% if @current_user.present? && @current_user.admin? %>
+				<%= link_to 'Delete User', @user, :method => 'delete', :data => {:confirm => "Are you sure you want to delete your account?"} %>
+			<% else %>
 
-<div class="controls">
-	<%= link_to 'Edit Details', edit_user_path(@current_user) %>
-	<%= link_to 'Delete User', @user, :method => 'delete', :data => {:confirm => "Are you sure you want to delete your account?"} %>
+			<% end %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12 centre">
+			<% if @user || (@current_user && @current_user.admin?) %>
+				<% @user.items.each do |item| %>
+					<ul>
+						<div class="col-md-2">
+							<li>
+								<%= link_to(cl_image_tag(item.image, :width=>200, :crop=>:thumb, :gravity=>:face, :effect=>"vibrance"), item) %>
+							</li>
+							<li>
+								<%= item.name %>
+							</li>
+						</div>
+						
+					</ul> 
+					
+				<% end %>
+			<% else %>
+
+			<% end %>
+		</div>
+	</div>
+		
+
+	
+
+
+
+
 </div>
 
-
-<% if @current_user %>
-	<% @current_user.items.each do |item| %>
-		<ul>
-			<li>
-				<%= link_to(image_tag(item.image), item) %>
-			</li>
-			<li>
-				<%= item.name %>
-			</li>
-		</ul> 
-		
-	<% end %>
-<% else %>
-
-<% end %>

@@ -12,10 +12,24 @@ class ItemsController < ApplicationController
   end
 
   def create
-  	# item = Item.create item_params
-  	
-    item = @current_user.items.create item_params 
-    redirect_to item
+  	if (params[:file] == nil)
+      item_details = item_params
+      item_details[:image] = 'http://fillmurray.com/200/200'
+      item = @current_user.items.create item_details
+      redirect_to item
+    else
+    # item = Item.create item_params
+  	 response = Cloudinary::Uploader.upload params[:file]
+      item_details = item_params
+      item_details[:image] = response["url"]
+      item = @current_user.items.create item_details
+      redirect_to item
+    end
+    
+    if item.category_id == 'personals' || item.category_id == 'community'
+        item_params[:price] = nil
+    end
+
   end
 
   def edit
@@ -36,7 +50,8 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-  	params.require(:item).permit(:name, :description, :price, :image, :subcategory_id, :category_id, :user_id)
+      params.require(:item).permit(:name, :description, :price, :image, :subcategory_id, :category_id, :user_id)
+      
   end
 
 

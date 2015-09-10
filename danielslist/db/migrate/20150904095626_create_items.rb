@@ -1,10 +1,10 @@
 class CreateItems < ActiveRecord::Migration
   def change
     create_table :items do |t|
-    	t.text :name
+    	t.string :name
     	t.text :description
     	t.float :price
-    	t.text :image
+    	t.string :image
     	t.timestamps
     end
   end

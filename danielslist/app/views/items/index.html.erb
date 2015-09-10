@@ -1,16 +1,23 @@
-<h2>Item Index</h2>
+<div class="jumbotron">
+	<h2>Item Index</h2>
 
-<ul>
-	<%= @items.each do |item| %>
-	<li>
-		<ul>
-			<li>
-				<%= item.name %>
-			</li>
-			<li>
-				<%= link_to(image_tag(item.image), item) %>
-			</li>
-		</ul>
-	</li>
-	<% end %>
-</ul>
+	<ul>
+		<% @items.each do |item| %>
+		<li>
+			<ul>
+				<div class="col-md-2">
+
+					<li>
+						<%= item.name %>
+					</li>
+					<li>
+						<%= link_to(cl_image_tag(item.image, :width=>200, :crop=>:thumb, :gravity=>:face, :effect=>"vibrance"), item) %>
+					</li>
+				</div>
+			</ul>
+		</li>
+		<% end %>
+	</ul>
+
+</div>
+

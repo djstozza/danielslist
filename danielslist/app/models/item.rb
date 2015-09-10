@@ -3,10 +3,15 @@
 # Table name: items
 #
 #  id             :integer          not null, primary key
-#  name           :text
+#  name           :string
 #  description    :text
 #  price          :float
-#  image          :text
+#  image          :string
+#  rooms          :integer
+#  area           :integer
+#  brand          :string
+#  model          :string
+#  year           :integer
 #  created_at     :datetime
 #  updated_at     :datetime
 #  subcategory_id :integer

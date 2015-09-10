@@ -4,9 +4,7 @@
 #
 #  id              :integer          not null, primary key
 #  email           :text
-#  username        :text
-#  name            :text
-#  surname         :text
+#  username        :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  password_digest :text
@@ -28,7 +26,5 @@ class User < ActiveRecord::Base
 
 	validates :email, :presence => true, :uniqueness => true
 	validates :username, :presence => true, :uniqueness => true
-	validates :name, :presence => true
-	validates :surname, :presence => true
 	validates :password, :length => {:minimum => 8}
 end

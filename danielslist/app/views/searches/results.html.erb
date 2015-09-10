@@ -1,14 +1,21 @@
-<ul>
+<div class="jumbotron">
+	<h2>Search Results</h2>
+	<ul>
 	<% @items.each do |item| %>
 	<li>
 		<ul>
-			<li>
-				<%= item.name %>
-			</li>
-			<li>
-				<%= link_to(image_tag(item.image), item) %>
-			</li>
+			<div class="col-md-2">
+				<li>
+					<%= link_to(cl_image_tag(item.image, :width=>150, :crop=>:thumb, :gravity=>:face, :effect=>"vibrance"), item) %>
+				</li>
+				<li>
+					<%= item.name %>
+				</li>	
+			</div>
+			
 		</ul>
 	</li>
 	<% end %>
-</ul>
+	</ul>
+</div>
+

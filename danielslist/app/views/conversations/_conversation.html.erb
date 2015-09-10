@@ -1,10 +1,5 @@
 <div class="media">
-  <div class="media-left">
-    <a href="#">
-      <img class="media-object" src="http://placehold.it/64x64" alt="...">
-    </a>
-  </div>
-  <div class="col-md-6 text-right">
+  <div class="col-md-3 text-right">
     <% if conversation.is_trashed?(@current_user) %>
         <%= link_to 'Untrash', untrash_conversation_path(conversation), class: 'btn btn-info', method: :post %>
     <% else %>

@@ -37,10 +37,10 @@ class ConversationsController < ApplicationController
 
   	private
   	def check_if_logged_in
-  		redirect_to root_path unless @current_user.present?
- 	end
+      redirect_to root_path unless @current_user.present?
+ 	  end
 
- 	def conversation_params
+ 	  def conversation_params
     	params.require(:conversation).permit(:subject, :body, :recipients => [])
   	end
   	

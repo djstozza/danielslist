@@ -1,44 +1,51 @@
-<h2>New User</h2>
 
-<% if @user.errors.any? %>
-	<ul>
-		<% @user.errors.full_messages.each do |msg| %>
-		<li>
-			<%= msg %>
-		</li>
-		<% end %>
-	</ul>
-<% end %>
+<div class="jumbotron">
+	<% if @user.errors.any? %>
+		<ul>
+			<% @user.errors.full_messages.each do |msg| %>
+			<li>
+				<%= msg %>
+			</li>
+			<% end %>
+		</ul>
+	<% end %>
+	<h2 class="heading1">New User</h2>
+	<%= form_for @user do |f| %>
+	<div class="row">
+		<div class="col-md-4"></div>
+		<div class="form-group col-md-4">
+			<%= f.label :email, :class => 'sr-only', :for => 'exampleInputEmail3' %>
+			<%= f.email_field :email, :class => 'form-control', :id => 'exampleInputEmail3', :placeholder => 'Email' %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4"></div>
+		<div class="form-group col-md-4">
+			<%= f.label :username, :class => 'sr-only', :for => 'exampleInputUser3' %>
+			<%= f.text_field :username, :class => 'form-control', :for => 'exampleInputUser3', :placeholder => 'Username' %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4"></div>
+		<div class="form-group col-md-4">
+			<%= f.label :password, :class => 'sr-only', :for => 'exampleInputPassword3' %>
+			<%= f.password_field :password, :class => 'form-control', :id => 'exampleInputPassword3', :placeholder => 'Password' %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4"></div>
+		<div class="form-group col-md-4">
+			<%= f.label :password_confirmation, :class => 'sr-only', :for => 'exampleInputPassword3' %>
+			<%= f.password_field :password_confirmation, :class => 'form-control', :id => 'exampleInputPassword3', :placeholder => 'Password' %>
+		</div>
+	</div>
+	
+	<div class="col-md-4 submit"></div>
+	
+	<%= submit_tag "Submit", :class => 'btn btn-default submit' %>
+	<% end %>
 
-<%= form_for @user do |f| %>
-<p>
-	<ul>
-		<li><%= f.label :email, 'Email Address:' %></li>
-		<li>
-			<%= f.email_field :email %>
-		</li>
-	</ul>
-</p>
-<p>
-	<ul>
-		<li><%= f.label :username, 'Username:' %></li>
-		<li><%= f.text_field :username %></li>
-	</ul>
-</p>
-<p>
-	<ul>
-		<li><%= f.label :password, 'Password:' %></li>
-		<li><%= f.password_field :password %></li>
-	</ul>
-</p>
-<p>
-	<ul>
-		<li><%= f.label :password_confirmation, 'Confirm Password' %></li>
-		<li><%= f.password_field :password_confirmation%></li>
-	</ul>
-</p>
-<%= f.submit %>
-<% end %>
+	<p class="centre">Already a user? Go back to the <%= link_to 'Login', login_path%> Page</p>
+</div>
 
-<p>Already a user? Go back to the <%= link_to 'Login', login_path%> Page</p>
 

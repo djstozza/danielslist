@@ -6,6 +6,11 @@ class ApplicationController < ActionController::Base
   before_action :fetch_current_user
 
   helper_method :mailbox
+
+  
+
+
+
   
   private
   def fetch_current_user
@@ -23,4 +28,5 @@ class ApplicationController < ActionController::Base
   def conversation
     @conversation ||= mailbox.conversations.find(params[:id])
   end
+
 end

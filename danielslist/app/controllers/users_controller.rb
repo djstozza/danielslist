@@ -1,6 +1,12 @@
 class UsersController < ApplicationController
 	before_action :check_if_logged_in, :only => [:index, :edit, :update]
 	#do admin later
+	def index
+		@users = User.all
+		unless @current_user.present? && @current_user.admin?
+			redirect_to root_path
+		end
+	end
 
 	def new
 		@user = User.new
@@ -13,6 +19,10 @@ class UsersController < ApplicationController
 		else
 			render :new
 		end
+	end
+
+	def show
+		@user = User.find params[:id]
 	end
 
 	def destroy
@@ -35,10 +45,14 @@ class UsersController < ApplicationController
 
 	private
 	def user_params
-		params.require(:user).permit(:email, :username, :name, :surname, :password, :password_confirmation)
+		params.require(:user).permit(:email, :username, :password, :password_confirmation)
 	end
 
 	def check_if_logged_in
   		redirect_to root_path unless @current_user.present?
  	end
+
+ 	def check_if_admin
+    	redirect_to root_path unless @current_user.present? && @current_user.admin?
+  	end
 end

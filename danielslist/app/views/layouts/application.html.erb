@@ -19,7 +19,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="<%= categories_path %>">Danielslist</a>
+      <a class="navbar-brand" href="<%= root_path %>">Danielslist</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -27,15 +27,22 @@
       <ul class="nav navbar-nav">
         <li><a href="<%= categories_path %>">Category Index</a></li>
        	<li><a href="<%= new_item_path %>">Post</a></li>
+    <% if @current_user.present? && @current_user.admin? %>
+        <li><a href="<%= users_path %>">User Index</a></li>
+    <% else %>
+
+    <% end %>
+
       </ul>
-      	<%= form_tag searches_path, :method => 'get', :class => 'navbar-form navbar-left' do %>
+    <%= form_tag searches_path, :method => 'get', :class => 'navbar-form navbar-left' do %>
 		 	<div class="form-group">
-		 	<%= text_field_tag :search, params[:search], :class => 'form-control' %>
+		 	  <%= text_field_tag :search, params[:search], :class => 'form-control' %>
 		 	</div>
 		
-		<%= submit_tag "Search", :name => nil, :class => 'btn btn-default' %>  
+		  <%= submit_tag "Search", :name => nil, :class => 'btn btn-default' %>  
 
 		<% end %>
+
      
 
 
@@ -61,33 +68,6 @@
   </div><!-- /.container-fluid -->
 </nav>
 
-
-
-
-		<%# if @current_user.present? %>
-		
-		
-				<%#= link_to "#{@current_user.username}", user_path(@current_user) %>
-				
-				<%#= link_to "Inbox", mailbox_inbox_path %>
-				<%#= link_to 'Post', new_item_path %>
-				
-				<%#= link_to 'Category Index', categories_path %>
-				
-				
-				
-				
-				
-				
-			
-		<%# else %>
-		
-				<%#= link_to 'Sign In', root_path %>
-				<%#= link_to 'Post', new_item_path %>
-				<%#= link_to 'Category Index', categories_path %>
-			
-		<%# end %>
-	</div>
 
 
 
