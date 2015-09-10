@@ -5,7 +5,7 @@
 		<% @subcategory.items.each do |item| %>
 		<li>
 			<ul>
-				<div class="col-md-2">
+				<div class="col-md-3">
 					<li>
 						<%= link_to(cl_image_tag(item.image, :width=>200, :crop=>:thumb, :gravity=>:face, :effect=>"vibrance"), item) %>
 					</li>
