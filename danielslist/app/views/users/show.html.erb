@@ -16,26 +16,25 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-12 centre">
 			<% if @user || (@current_user && @current_user.admin?) %>
+				
 				<% @user.items.each do |item| %>
 					<ul>
-						<div class="col-md-2">
+						<div class="col-md-3">
 							<li>
 								<%= link_to(cl_image_tag(item.image, :width=>200, :crop=>:thumb, :gravity=>:face, :effect=>"vibrance"), item) %>
 							</li>
 							<li>
 								<%= item.name %>
 							</li>
-						</div>
+						</div>	
 						
 					</ul> 
-					
+				
 				<% end %>
 			<% else %>
 
 			<% end %>
-		</div>
 	</div>
 		
 
