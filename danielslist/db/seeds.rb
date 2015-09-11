@@ -1,5 +1,5 @@
 User.destroy_all
-u0 = User.create :username => 'djstozza', :email => 'djstozza@gmail.com', :password => '12345678', :password_confirmation => '12345678'
+u0 = User.create :username => 'djstozza', :email => 'djstozza@gmail.com', :password => '12345678', :password_confirmation => '12345678', :admin => true
 
 u1 = User.create :username => 'smithy12345', :email => 'johnsmith@gmail.com', :password => '12345678', :password_confirmation => '12345678'
 
