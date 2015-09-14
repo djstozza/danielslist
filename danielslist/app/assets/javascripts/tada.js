@@ -8,6 +8,7 @@ tada = {
 
 	stop: function () {
 		$('h1.heading').removeClass('tada');
+		tada.start();
 	},
 
 	init: function () {

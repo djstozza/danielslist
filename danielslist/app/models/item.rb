@@ -7,11 +7,6 @@
 #  description    :text
 #  price          :float
 #  image          :string
-#  rooms          :integer
-#  area           :integer
-#  brand          :string
-#  model          :string
-#  year           :integer
 #  created_at     :datetime
 #  updated_at     :datetime
 #  subcategory_id :integer
