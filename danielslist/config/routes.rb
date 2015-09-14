@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  default_url_options :host => "danielslist.herokuapp.com"
 	root :to => 'session#new'
 
 	get '/searches' => 'searches#results'
